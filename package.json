@@ -2,7 +2,6 @@
   "name": "goit-react-hw-04-movies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://skiptomy.github.io/goit-react-hw-04-movies",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -35,7 +34,7 @@
     "lint:fix": "eslint src/**/**/*.js --fix",
     "lint": "eslint src/**/**/*.js",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "netlify deploy -p"
   },
   "eslintConfig": {
     "extends": "react-app"
