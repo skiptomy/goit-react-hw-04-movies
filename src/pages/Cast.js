@@ -1,10 +1,14 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import Spinner from '../components/Spinner/Spinner';
 import movieApi from '../services/apiService';
 
 export default class Cast extends Component {
+  static propTypes = {
+    match: ReactRouterPropTypes.match.isRequired,
+  };
+
   state = {
     actors: [],
     loading: true,

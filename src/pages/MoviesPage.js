@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import getQueryParams from '../utils/getQueryParams';
 import ListOfMovies from './ListOfMovies';
 import Searchbox from '../components/Searchbox/Searchbox';
@@ -8,6 +8,11 @@ import Spinner from '../components/Spinner/Spinner';
 import movieApi from '../services/apiService';
 
 export default class MoviesPage extends Component {
+  static propTypes = {
+    history: ReactRouterPropTypes.history.isRequired,
+    location: ReactRouterPropTypes.location.isRequired,
+  };
+
   state = {
     movies: [],
     query: '',

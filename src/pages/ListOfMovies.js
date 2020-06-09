@@ -1,38 +1,33 @@
-/* eslint-disable react/prefer-stateless-function */
-/* eslint-disable react/forbid-prop-types */
-import React, { Component } from 'react';
-
+import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 import styles from './ListOfMovies.module.css';
 
-class ListOfMovies extends Component {
-  static propTypes = {
-    match: propTypes.object.isRequired,
-    location: propTypes.object.isRequired,
-    history: propTypes.object.isRequired,
-  };
+const ListOfMovies = ({ location, movies }) => (
+  <ul>
+    {movies.map(movie => (
+      <li key={movie.id} className={styles.item}>
+        <Link
+          className={styles.link}
+          to={{
+            pathname: `/movies/${movie.id}`,
+            state: { from: location },
+          }}
+        >
+          {movie.title ? movie.title : movie.name}
+        </Link>
+      </li>
+    ))}
+  </ul>
+);
 
-  render() {
-    const { location, movies } = this.props;
-    return (
-      <ul>
-        {movies.map(movie => (
-          <li key={movie.id} className={styles.item}>
-            <Link
-              className={styles.link}
-              to={{
-                pathname: `/movies/${movie.id}`,
-                state: { from: location },
-              }}
-            >
-              {movie.title ? movie.title : movie.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    );
-  }
-}
+ListOfMovies.propTypes = {
+  location: propTypes.shape.isRequired,
+  movies: propTypes.arrayOf(
+    propTypes.shape({
+      id: propTypes.number.isRequired,
+    }),
+  ).isRequired,
+};
 
 export default withRouter(ListOfMovies);

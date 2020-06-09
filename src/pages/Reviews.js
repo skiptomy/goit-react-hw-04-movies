@@ -1,10 +1,14 @@
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import Spinner from '../components/Spinner/Spinner';
 import movieApi from '../services/apiService';
 
 export default class Reviews extends Component {
+  static propTypes = {
+    match: ReactRouterPropTypes.match.isRequired,
+  };
+
   state = {
     reviews: [],
     loading: true,

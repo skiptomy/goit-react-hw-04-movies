@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { Route, NavLink } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import NotFound from './NotFound';
 import Spinner from '../components/Spinner/Spinner';
 import Cast from './Cast';
@@ -11,6 +11,12 @@ import routes from '../routes';
 import styles from './MovieDetailsPage.module.css';
 
 export default class MovieDetailsPage extends Component {
+  static propTypes = {
+    history: ReactRouterPropTypes.history.isRequired,
+    location: ReactRouterPropTypes.location.isRequired,
+    match: ReactRouterPropTypes.match.isRequired,
+  };
+
   state = { movie: null, loading: true, error: null };
 
   componentDidMount() {
